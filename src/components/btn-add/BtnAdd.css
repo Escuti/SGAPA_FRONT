@@ -1,0 +1,10 @@
+.btn-add{
+    display: flex;
+    align-items: center;
+    background-color: var(--tertiary);
+    color: #FFFFFF;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+}

@@ -1,0 +1,62 @@
+/*Fuentes*/
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+/*Reset*/
+*{
+  margin: 0;
+  box-sizing: border-box;
+}
+
+:root{
+  --primary: #006C4B;
+  --secondary: #4D6357;
+  --tertiary: #326578;
+}
+
+body{
+  font-size: 16px;
+  font-family: "Roboto", serif;
+}
+
+.content-search{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#container{
+  width: 100%;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 250px auto;
+  grid-template-areas: "nav main";
+}
+
+.badge {
+  padding: 5px 10px;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  font-weight: bold;
+  display: inline-block;
+  text-align: center;
+}
+
+.badge-green {
+  background-color: #28a745;
+  color: white;
+}
+
+.badge-red {
+  background-color: #dc3545;
+  color: white;
+}
+
+.icon-btn {
+  cursor: pointer;
+  font-size: 1.2rem;
+  margin: 0 8px;
+  color: #555;
+  transition: color 0.2s ease;
+}
+
+.icon-btn:hover {
+  color: #000;
+}

@@ -15,6 +15,7 @@ const NavBar = () => {
                 <hr className="hr-separator" />
                 <li className="nav-item"><NavLink to="/dashboard/students" className="item-intro">Estudiantes</NavLink></li>
                 <li className="nav-item"><NavLink to="/dashboard/professors" className="item-intro">Docentes</NavLink></li>
+                <li className="nav-item"><NavLink to="/dashboard/assignments" className="item-intro">Actividades</NavLink></li>
                 <li className="nav-item"><NavLink to="/dashboard/groups" className="item-intro">Grupos</NavLink></li>
                 <li className="nav-item"><NavLink to="/dashboard/subjects" className="item-intro">Materias</NavLink></li>
                 <li className="nav-item"><NavLink to="/dashboard/parents" className="item-intro">Acudientes</NavLink></li>

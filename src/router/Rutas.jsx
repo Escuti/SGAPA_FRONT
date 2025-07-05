@@ -2,6 +2,7 @@ import {BrowserRouter as Router, Routes, Route, Navigate} from "react-router-dom
 import App from "../App";
 import Estudiantes from "../pages/Estudiantes";
 import Docentes from "../pages/Docentes";
+import Actividades from "../pages/Actividades";
 import Grupos from "../pages/Grupos";
 import Materias from "../pages/Materias";
 import Acudientes from "../pages/Acudientes";
@@ -14,6 +15,7 @@ function Rutas(){ /*Al proceso de tener una ruta dentro de otra, le llamamos rut
             <Route path="/dashboard" element={<App></App>}> 
                 <Route path="students" element={<Estudiantes></Estudiantes>}></Route>
                 <Route path="professors" element={<Docentes></Docentes>}></Route>
+                <Route path="assignments" element={<Actividades></Actividades>}></Route>
                 <Route path="groups" element={<Grupos></Grupos>}></Route>
                 <Route path="subjects" element={<Materias></Materias>}></Route>
                 <Route path="parents" element={<Acudientes></Acudientes>}></Route>

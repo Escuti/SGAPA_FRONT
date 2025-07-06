@@ -30,6 +30,7 @@ const Acudientes =()=>{//recordar que los <></> iniciales, son un fragmento, lo 
         setParentEditado(null); //Restablezca el estado
         setNewParent({ //Restablezca los campos
           nombre: "",
+          usuario: "",
           correo: "",
           contraseña: "",
           telefono: "",
@@ -41,6 +42,7 @@ const Acudientes =()=>{//recordar que los <></> iniciales, son un fragmento, lo 
      // Estado para el formulario de un nuevo colaborador
      const [newParent, setNewParent] = useState({
         nombre: "",
+        usuario: "",
         correo: "",
         contraseña: "",
         telefono: "",
@@ -62,6 +64,7 @@ const Acudientes =()=>{//recordar que los <></> iniciales, son un fragmento, lo 
     //Config de columnas y rellenar con datos de API
     const columns=[
         {name: "Nombre", selector: row => row.nombre, sortable: true},
+        {name: "Usuario", selector: row => row.usuario},
         {name: "Correo", selector: row => row.correo},
         {name: "Contraseña", selector: row => row.contraseña},
         {name: "Telefono", selector: row => row.telefono},
@@ -131,6 +134,7 @@ const Acudientes =()=>{//recordar que los <></> iniciales, son un fragmento, lo 
          setParentEditado(null);
          setNewParent({
           nombre: "",
+          usuario: "",
           correo: "",
           contraseña: "",
           telefono: "",
@@ -147,6 +151,7 @@ const Acudientes =()=>{//recordar que los <></> iniciales, son un fragmento, lo 
      const handleEdit = (padre_familia) =>{
        setNewParent({
        nombre: padre_familia.nombre,
+       usuario: padre_familia.usuario,
        correo: padre_familia.correo,
        contraseña: padre_familia.contraseña,
        telefono: padre_familia.telefono,
@@ -218,6 +223,10 @@ const Acudientes =()=>{//recordar que los <></> iniciales, son un fragmento, lo 
                 <div className="form-group">
                     <label>Nombre</label>
                     <input type="text" name="nombre" value={newParent.nombre} onChange={handleChange}></input>
+                </div>
+                <div className="form-group">
+                    <label>Usuario</label>
+                    <input type="text" name="usuario" value={newParent.usuario} onChange={handleChange}></input>
                 </div>
                 <div className="form-group">
                     <label>Correo</label>

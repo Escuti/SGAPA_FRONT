@@ -29,10 +29,10 @@ export async function changeParentStatus(id_pfamilia, estado) {
 }
 
 export const updateParent = async (parent) => {
-  const {id_pfamilia, nombre, correo, contraseña, telefono} =parent; 
+  const {id_pfamilia, nombre, usuario, correo, contraseña, telefono} =parent; 
   return await fetch(`${API_BASE}/parent/update_user/${id_pfamilia}`, {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({id_pfamilia, nombre, correo, contraseña, telefono}),
+    body: JSON.stringify({id_pfamilia, nombre, usuario, correo, contraseña, telefono}),
   });
 };

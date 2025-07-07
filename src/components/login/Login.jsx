@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
 import './Login.css';
 import sgapalogo from '../navbar/sgapalogo.svg';
+import { useNavigate } from 'react-router-dom';
+import { loginUser } from "../../services/loginService";
 
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [mensaje, setMensaje] = useState('');
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -14,17 +17,7 @@ const Login = () => {
     setMensaje('');
 
     try {
-      const res = await fetch('http://localhost:8000/userlog/login_user', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username, password }),
-      });
-
-      const data = await res.json();
-
-      if (!res.ok) {
-        throw new Error(data.detail || data.message || `Error ${res.status}`);
-      }
+      const data = await loginUser(username, password);
 
       localStorage.setItem('user_id', data.id_usuario);
       localStorage.setItem('tipo_usuario', data.tipo_usuario);
@@ -32,21 +25,23 @@ const Login = () => {
 
       setMensaje(data.mensaje);
 
+      console.log("Datos recibidos:", data);
+
       switch (data.tipo_usuario) {
         case 'administrador':
-          window.location.href = '/admin/dashboard';
+          navigate("/dashboard/students");
           break;
-        case 'docente':
-          window.location.href = '/docente/panel';
+        case "docente":
+          navigate("/docente/inicio");
           break;
-        case 'estudiante':
-          window.location.href = '/estudiante/inicio';
+        case "estudiante":
+          navigate("/estudiante/inicio");
           break;
-        case 'acudiente':
-          window.location.href = '/acudiente/inicio';
+        case "acudiente":
+          navigate("/acudiente/inicio");
           break;
         default:
-          window.location.href = '/';
+          navigate("/login");
       }
     } catch (err) {
       setMensaje(err.message || 'Error al conectar con el servidor');
@@ -67,6 +62,7 @@ const Login = () => {
             value={username}
             onChange={e => setUsername(e.target.value)}
             className="login-input"
+            required
           />
           <input
             type="password"
@@ -74,13 +70,15 @@ const Login = () => {
             value={password}
             onChange={e => setPassword(e.target.value)}
             className="login-input"
+            required
           />
           <button type="submit" disabled={loading} className="login-button">
-            {loading ? 'Ingresando...' : 'Ingresar'}
+            {loading ? "Ingresando..." : "Ingresar"}
           </button>
         </form>
         {mensaje && <p className="login-message">{mensaje}</p>}
       </div>
+
       <div className="login-attribution">
         <a
           href="https://www.vecteezy.com/free-vector/school"

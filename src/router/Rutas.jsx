@@ -9,10 +9,17 @@ import Acudientes from "../pages/Acudientes";
 import Bolsillos from "../pages/Bolsillos";
 import Login from "../components/login/Login";
 
+const getTipoUsuario = () => { //Local storage, que desde el login nos trae las credenciales insertadas y las almacena en un espacio local
+  const userData = localStorage.getItem("userData");
+  return userData ? JSON.parse(userData).tipo_usuario : null;
+};
 
 function Rutas(){ /*Al proceso de tener una ruta dentro de otra, le llamamos rutas anidadas */
+    const tipoUsuario = getTipoUsuario();
+
     return(
         <Routes>
+            {tipoUsuario === "administrador" && (
             <Route path="/dashboard" element={<App></App>}> 
                 <Route path="students" element={<Estudiantes></Estudiantes>}></Route>
                 <Route path="professors" element={<Docentes></Docentes>}></Route>
@@ -23,8 +30,22 @@ function Rutas(){ /*Al proceso de tener una ruta dentro de otra, le llamamos rut
                 <Route path="pockets" element={<Bolsillos></Bolsillos>}></Route>
                 {/*Aqui van todas las rutas anidadas dentro del dashboard*/}
             </Route>
+            )}
 
-            {/*Rutas independientes al dashboard irían aquí */}
+            {/*Rutas específicas de usuarios */}
+            {tipoUsuario === "docente" &&(
+                <Route path="/docente/inicio" element={<></>}></Route>
+            )}
+
+            {tipoUsuario === "estudiante" &&(
+                <Route path="/estudiante/inicio" element={<></>}></Route>
+            )}
+
+            {tipoUsuario === "acudiente" &&(
+                <Route path="/acudiente/inicio" element={<></>}></Route>
+            )}
+
+            {/* Ruta de login para usuarios */}
             <Route path="/login" element={<Login></Login>}></Route>
 
             {/*Redirecciones ruta que no existe */}

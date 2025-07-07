@@ -1,0 +1,45 @@
+.topbar-container {
+  background-color: var(--primary);
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1.5rem;
+  color: white;
+  position: fixed; 
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.topbar-left a {
+  color: white;
+  text-decoration: none;
+  margin-right: 1rem;
+  font-size: 14px;
+  transition: color 0.3s ease;
+}
+
+.topbar-left a:hover {
+  color: #aadfff;
+}
+
+.topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.icon-button {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 0.25rem;
+  transition: color 0.2s ease;
+}
+
+.icon-button:hover {
+  color: #aadfff;
+}

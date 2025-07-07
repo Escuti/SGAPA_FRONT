@@ -8,3 +8,7 @@
     border-radius: 5px;
     cursor: pointer;
 }
+
+.btn-add:hover:not(:disabled) {
+  background-color: #16577a; 
+}

@@ -5,6 +5,7 @@ import InputSearch from "../components/input-search/InputSearch";
 import DataTable from "react-data-table-component";
 import Modal from "../components/modal/Modal"
 import Swal from "sweetalert2"
+import TopBar from '../components/topbar/TopBar'
 
 //Importanción de servicios de la API
 import { getStudents, createStudent, updateStudent, changeStudentStatus } from "../services/studentService"; //definición de métodos o servicios a usar
@@ -239,6 +240,7 @@ const Estudiantes =()=>{//recordar que los <></> iniciales, son un fragmento, lo
     //Aquí hacia arriba manejo de servicios
     return(
         <>
+        <TopBar></TopBar>
         <ContentHeader
         title={"Estudiantes"}
         paragraph={"Lorem Ipsum"}></ContentHeader>

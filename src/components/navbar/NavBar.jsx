@@ -1,13 +1,13 @@
 import { NavLink } from 'react-router-dom';
 import './NavBar.css';
-import mitralogo from "./mitralogo.svg";
+import sgapalogo from "./sgapalogo.svg";
 
 const NavBar = () => {
     return (
 
         <nav>
             <div className="nav-logo">
-                <img src={mitralogo} alt="logo-mitra" />
+                <img src={sgapalogo} alt="logo-sgapa" />
             </div>
             <ul className="nav-menu">
                 <li className="nav-item"><span className="material-symbols-rounded">Home</span><NavLink to="/home">Inicio</NavLink></li>                

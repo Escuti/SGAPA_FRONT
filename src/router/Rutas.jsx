@@ -7,6 +7,7 @@ import Grupos from "../pages/Grupos";
 import Materias from "../pages/Materias";
 import Acudientes from "../pages/Acudientes";
 import Bolsillos from "../pages/Bolsillos";
+import Login from "../components/login/Login";
 
 
 function Rutas(){ /*Al proceso de tener una ruta dentro de otra, le llamamos rutas anidadas */
@@ -24,7 +25,7 @@ function Rutas(){ /*Al proceso de tener una ruta dentro de otra, le llamamos rut
             </Route>
 
             {/*Rutas independientes al dashboard irían aquí */}
-            <Route path="/login" element={<Estudiantes></Estudiantes>}></Route>
+            <Route path="/login" element={<Login></Login>}></Route>
 
             {/*Redirecciones ruta que no existe */}
             <Route path="*" element={<Navigate to="/login"></Navigate>}></Route>

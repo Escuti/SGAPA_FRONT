@@ -5,6 +5,7 @@ import InputSearch from "../components/input-search/InputSearch";
 import DataTable from "react-data-table-component";
 import Modal from "../components/modal/Modal"
 import Swal from "sweetalert2"
+import TopBar from '../components/topbar/TopBar'
 
 //Importanción de servicios de la API
 import { getAssignments, createAssignment, updateAssignment } from "../services/assignmentService"; //definición de métodos o servicios a usar
@@ -183,6 +184,7 @@ const Actividades =()=>{//recordar que los <></> iniciales, son un fragmento, lo
     //Aquí hacia arriba manejo de servicios
     return(
         <>
+        <TopBar></TopBar>
         <ContentHeader
         title={"Actividades"}
         paragraph={"Lorem Ipsum"}></ContentHeader>

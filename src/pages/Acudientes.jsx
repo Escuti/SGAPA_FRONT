@@ -5,6 +5,7 @@ import InputSearch from "../components/input-search/InputSearch";
 import DataTable from "react-data-table-component";
 import Modal from "../components/modal/Modal"
 import Swal from "sweetalert2"
+import TopBar from '../components/topbar/TopBar'
 
 //Importanción de servicios de la API
 import { getParents, createParent, updateParent, changeParentStatus } from "../services/parentService"; //definición de métodos o servicios a usar
@@ -194,6 +195,7 @@ const Acudientes =()=>{//recordar que los <></> iniciales, son un fragmento, lo 
     //Aquí hacia arriba manejo de servicios
     return(
         <>
+        <TopBar></TopBar>
         <ContentHeader
         title={"Acudientes"}
         paragraph={"Lorem Ipsum"}></ContentHeader>

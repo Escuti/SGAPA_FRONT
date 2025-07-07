@@ -1,9 +1,9 @@
 import "./ContentHeader.css"
 
-const ContentHeader =({title,paragraph})=>{//es necesario usar className en react, pues class es reservado a css
-    return(
+const ContentHeader = ({ title, paragraph }) => { //Es necesario usar className en react, ya que class solo es de css
+    return (
         <div className="content-header">
-            <h1>{title}</h1>
+            <h1 className="bubble-title">{title}</h1>
             <p>{paragraph}</p>
         </div>
     );

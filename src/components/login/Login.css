@@ -1,0 +1,102 @@
+.login-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff; 
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  background: 
+    linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)),
+    url('./schoolbg.jpg') center/cover no-repeat;
+}
+
+.login-box {
+  background-color: var(--primary); 
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  width: 360px;
+  text-align: center;
+  font-family: 'Segoe UI', sans-serif;
+  position: relative;
+}
+
+/* Logo encima del formulario */
+.login-logo {
+  height: 110px;
+  width: auto;
+  margin-bottom: 0.8rem;
+}
+
+.login-title {
+  margin-bottom: 1.5rem;
+  font-size: 1.75rem;
+  color: #ffffff; 
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.login-input {
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border: 1px solid #eeeeee;
+  border-radius: 6px;
+  outline: none;
+  transition: border-color 0.2s ease;
+  background-color: #ffffff; 
+}
+
+.login-input:focus {
+  border-color: var(--tertiary); 
+}
+
+
+.login-button {
+  padding: 0.75rem;
+  font-size: 1rem;
+  background-color: var(--tertiary); 
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.login-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.login-button:hover:not(:disabled) {
+  background-color: #16577a; 
+}
+
+
+.login-message {
+  margin-top: 1rem;
+  color: #ffe6e6; 
+  font-size: 0.9rem;
+}
+
+/* ENLACE DE ATRIBUCIÓN DE BG */
+.login-attribution {
+  position: absolute;
+  bottom: 12px;
+  right: 16px;
+  font-size: 0.75rem;
+}
+
+.login-attribution a {
+  color: #555;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.login-attribution a:hover {
+  color: #222;
+}

@@ -10,6 +10,8 @@ nav{
     min-height: 100vh;
 }
 .nav-logo{
+    height: 250px;
+    width: auto;
     padding: 0.8rem;
     display: flex;
     justify-content: center;

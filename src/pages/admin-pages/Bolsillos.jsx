@@ -1,14 +1,14 @@
 import { useState } from "react";
-import BtnAdd from "../components/btn-add/BtnAdd";
-import ContentHeader from "../components/content-header/ContentHeader";
-import InputSearch from "../components/input-search/InputSearch";
+import BtnAdd from "../../components/btn-add/BtnAdd";
+import ContentHeader from "../../components/content-header/ContentHeader";
+import InputSearch from "../../components/input-search/InputSearch";
 import DataTable from "react-data-table-component";
-import Modal from "../components/modal/Modal";
+import Modal from "../../components/modal/Modal";
 import Swal from "sweetalert2";
 
 //Importación servicios que hacen las peticiones al backend
-import { getBolsillos, createBolsillo } from "../services/bolsilloService";
-import { getStudents } from "../services/studentService";
+import { getBolsillos, createBolsillo } from "../../services/bolsilloService";
+import { getStudents } from "../../services/studentService";
 
 import { useEffect } from "react";
 

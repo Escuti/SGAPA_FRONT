@@ -1,16 +1,16 @@
 import { useEffect, useState } from "react";
-import BtnAdd from "../components/btn-add/BtnAdd";
-import ContentHeader from "../components/content-header/ContentHeader";
-import InputSearch from "../components/input-search/InputSearch";
+import BtnAdd from "../../components/btn-add/BtnAdd";
+import ContentHeader from "../../components/content-header/ContentHeader";
+import InputSearch from "../../components/input-search/InputSearch";
 import DataTable from "react-data-table-component";
-import Modal from "../components/modal/Modal"
+import Modal from "../../components/modal/Modal"
 import Swal from "sweetalert2"
-import TopBar from '../components/topbar/TopBar'
+import TopBar from '../../components/topbar/TopBar'
 
 //Importanción de servicios de la API
-import { getAssignments, createAssignment, updateAssignment } from "../services/assignmentService"; //definición de métodos o servicios a usar
-import { getGroups } from "../services/groupService";
-import { getSubjects } from "../services/subjectService";
+import { getAssignments, createAssignment, updateAssignment } from "../../services/assignmentService"; //definición de métodos o servicios a usar
+import { getGroups } from "../../services/groupService";
+import { getSubjects } from "../../services/subjectService";
 
 
 //Configuración de Columnas

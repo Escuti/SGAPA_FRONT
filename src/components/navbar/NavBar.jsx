@@ -3,31 +3,87 @@ import './NavBar.css';
 import sgapalogo from "./sgapalogo.svg";
 
 const NavBar = () => {
-    return (
+    // Obtener el tipo de usuario desde localStorage
+    const userData = localStorage.getItem("userData");
+    const tipoUsuario = userData ? JSON.parse(userData).tipo_usuario : null;
 
+    return ( //SE MANEJA DESPLIEGUE DE USUARIO CON CONDICIONALES USANDO EL tipo_usuario DEL Login.jsx
         <nav>
             <div className="nav-logo">
                 <img src={sgapalogo} alt="logo-sgapa" />
             </div>
             <ul className="nav-menu">
-                <li className="nav-item"><span className="material-symbols-rounded">Home</span><NavLink to="/home">Inicio</NavLink></li>                
-                <li className="nav-item"><span className="material-symbols-rounded">settings</span><NavLink to="/config">Configuración</NavLink></li>
+                {/* Botones para TODOS los usuarios */}
+                <li className="nav-item">
+                    <span className="material-symbols-rounded">home</span>
+                    <NavLink to="/home">Inicio</NavLink>
+                </li>
+                
+                {/* Mostrar Configuración solo para admin y docente */}
+                {(tipoUsuario === "administrador" || tipoUsuario === "docente") && (
+                    <li className="nav-item">
+                        <span className="material-symbols-rounded">settings</span>
+                        <NavLink to="/config">Configuración</NavLink>
+                    </li>
+                )}
+
                 <hr className="hr-separator" />
-                <li className="nav-item"><NavLink to="/dashboard/students" className="item-intro">Estudiantes</NavLink></li>
-                <li className="nav-item"><NavLink to="/dashboard/professors" className="item-intro">Docentes</NavLink></li>
-                <li className="nav-item"><NavLink to="/dashboard/assignments" className="item-intro">Actividades</NavLink></li>
-                <li className="nav-item"><NavLink to="/dashboard/groups" className="item-intro">Grupos</NavLink></li>
-                <li className="nav-item"><NavLink to="/dashboard/subjects" className="item-intro">Materias</NavLink></li>
-                <li className="nav-item"><NavLink to="/dashboard/parents" className="item-intro">Acudientes</NavLink></li>
-                <li className="nav-item"><NavLink to="/dashboard/pockets" className="item-intro">Bolsillos</NavLink></li>
+
+                {/* Elementos específicos por rol */}
+                {tipoUsuario === "administrador" && (
+                    <>
+                        <li className="nav-item">
+                            <NavLink to="/admin/crud-estudiantes" className="item-intro">Estudiantes</NavLink>
+                        </li>
+                        <li className="nav-item">
+                            <NavLink to="/admin/crud-docentes" className="item-intro">Docentes</NavLink>
+                        </li>
+                        <li className="nav-item">
+                            <NavLink to="/admin/crud-actividades" className="item-intro">Actividades</NavLink>
+                        </li>
+                        <li className="nav-item">
+                            <NavLink to="/admin/crud-grupos" className="item-intro">Grupos</NavLink>
+                        </li>
+                        <li className="nav-item">
+                            <NavLink to="/admin/crud-materias" className="item-intro">Materias</NavLink>
+                        </li>
+                        <li className="nav-item">
+                            <NavLink to="/admin/crud-acudientes" className="item-intro">Acudientes</NavLink>
+                        </li>
+                        <li className="nav-item">
+                            <NavLink to="/admin/pockets" className="item-intro">Bolsillos</NavLink>
+                        </li>
+                    </>
+                )}
+
+                {tipoUsuario === "docente" && (
+                    <li className="nav-item">
+                        <NavLink to="/professor/calificaciones" className="item-intro">Calificaciones</NavLink>
+                    </li>
+                )}
+
+                {tipoUsuario === "estudiante" && (
+                    <li className="nav-item">
+                        <NavLink to="/student/entregas" className="item-intro">Entregas</NavLink>
+                    </li>
+                )}
+
+                {tipoUsuario === "acudiente" && (
+                    <li className="nav-item">
+                        <NavLink to="/parent/seguimiento" className="item-intro">Seguimiento</NavLink>
+                    </li>
+                )}
+
                 <hr className="hr-separator" />
-                <li className="nav-item"><span className="material-symbols-rounded">logout</span><NavLink to="/logout">Cerrar sesión</NavLink></li>
+
+                {/* Botón de logout para todos */}
+                <li className="nav-item">
+                    <span className="material-symbols-rounded">logout</span>
+                    <NavLink to="/logout">Cerrar sesión</NavLink>
+                </li>
             </ul>
-
         </nav>
-
     );
 };
-
 
 export default NavBar;

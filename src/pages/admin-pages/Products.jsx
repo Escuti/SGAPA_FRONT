@@ -1,4 +1,4 @@
-import ContentHeader from "../components/content-header/ContentHeader";
+import ContentHeader from "../../components/content-header/ContentHeader";
 
 
 const Products =()=>{//recordar que los <></> iniciales, son un fragmento, lo cual exige react para declarar múltiples sentencias

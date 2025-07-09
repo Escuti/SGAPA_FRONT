@@ -19,26 +19,26 @@ const Login = () => {
     try {
       const data = await loginUser(username, password);
 
-      localStorage.setItem('user_id', data.id_usuario);
-      localStorage.setItem('tipo_usuario', data.tipo_usuario);
-      localStorage.setItem('id_detalle', data.id_detalle);
+      localStorage.setItem('userData', JSON.stringify({
+        id_usuario: data.id_usuario,
+        tipo_usuario: data.tipo_usuario,
+        id_detalle: data.id_detalle
+      }));
 
       setMensaje(data.mensaje);
 
-      console.log("Datos recibidos:", data);
-
       switch (data.tipo_usuario) {
         case 'administrador':
-          navigate("/dashboard/students");
+          navigate("/admin");
           break;
         case "docente":
-          navigate("/docente/inicio");
+          navigate("/professor");
           break;
         case "estudiante":
-          navigate("/estudiante/inicio");
+          navigate("/student");
           break;
         case "acudiente":
-          navigate("/acudiente/inicio");
+          navigate("/parent");
           break;
         default:
           navigate("/login");

@@ -15,9 +15,9 @@ import Entregas from './pages/student-pages/relCAL_Entregas';
 import Calificaciones from './pages/professor-pages/relCAL_Calificaciones';
 
 function App() { //Funcion de declaracion
-
+  const userData = sessionStorage.getItem('userData');
   return (
-    <section id='container'>
+    <section id="container" key={userData ? JSON.parse(userData).tipo_usuario : 'login'}>
       <NavBar></NavBar>
       <main>
         <div className='frame-content'>

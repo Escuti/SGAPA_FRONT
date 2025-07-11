@@ -1,11 +1,19 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import './NavBar.css';
 import sgapalogo from "./sgapalogo.svg";
 
 const NavBar = () => {
     // Obtener el tipo de usuario desde localStorage
-    const userData = localStorage.getItem("userData");
+    const userData = sessionStorage.getItem("userData");
     const tipoUsuario = userData ? JSON.parse(userData).tipo_usuario : null;
+
+    const navigate = useNavigate();
+
+    const cerrarSesion = () => {
+        sessionStorage.removeItem("userInfo");
+        sessionStorage.removeItem("token");
+        navigate("/login");
+    };
 
     return ( //SE MANEJA DESPLIEGUE DE USUARIO CON CONDICIONALES USANDO EL tipo_usuario DEL Login.jsx
         <nav>
@@ -79,7 +87,7 @@ const NavBar = () => {
                 {/* Botón de logout para todos */}
                 <li className="nav-item">
                     <span className="material-symbols-rounded">logout</span>
-                    <NavLink to="/logout">Cerrar sesión</NavLink>
+                    <NavLink to="/login" onClick={cerrarSesion}>Cerrar sesión</NavLink>
                 </li>
             </ul>
         </nav>

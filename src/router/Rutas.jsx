@@ -12,7 +12,7 @@ import Entregas from "../pages/student-pages/relCAL_Entregas";
 import Calificaciones from "../pages/professor-pages/relCAL_Calificaciones";
 
 const getTipoUsuario = () => {
-  const userData = localStorage.getItem("userData");
+  const userData = sessionStorage.getItem("userData");
   return userData ? JSON.parse(userData).tipo_usuario : null;
 };
 

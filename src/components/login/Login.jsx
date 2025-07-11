@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import './Login.css';
 import sgapalogo from '../navbar/sgapalogo.svg';
-import { useNavigate } from 'react-router-dom';
 import { loginUser } from "../../services/loginService";
 
 const Login = () => {
@@ -9,7 +8,6 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const [mensaje, setMensaje] = useState('');
   const [loading, setLoading] = useState(false);
-  const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -19,30 +17,22 @@ const Login = () => {
     try {
       const data = await loginUser(username, password);
 
-      localStorage.setItem('userData', JSON.stringify({
+      // Guardar los datos en sessionStorage
+      sessionStorage.setItem('userData', JSON.stringify({
         id_usuario: data.id_usuario,
         tipo_usuario: data.tipo_usuario,
         id_detalle: data.id_detalle
       }));
 
-      setMensaje(data.mensaje);
+      // Redirigir según tipo de usuario
+      const rutaBase = {
+        administrador: "admin",
+        docente: "professor",
+        estudiante: "student",
+        acudiente: "parent"
+      }[data.tipo_usuario] || "login";
 
-      switch (data.tipo_usuario) {
-        case 'administrador':
-          navigate("/admin");
-          break;
-        case "docente":
-          navigate("/professor");
-          break;
-        case "estudiante":
-          navigate("/student");
-          break;
-        case "acudiente":
-          navigate("/parent");
-          break;
-        default:
-          navigate("/login");
-      }
+      window.location.href = `/${rutaBase}`; // Redirección forzada
     } catch (err) {
       setMensaje(err.message || 'Error al conectar con el servidor');
     } finally {

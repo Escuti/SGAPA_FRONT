@@ -39,3 +39,8 @@ export const updateStudent = async (student) => {
     body: JSON.stringify({id_estud, nombre, usuario, contraseña, correo, telefono, grupo, padre_familia}),//No se envia el estado
   });
 };
+
+export const getStudentByParent = async (id_pfamilia) => {
+  const res = await fetch(`${API_BASE}/student/by-parent/${id_pfamilia}`);
+  return await res.json();
+};

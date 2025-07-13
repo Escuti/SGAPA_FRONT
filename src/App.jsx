@@ -9,9 +9,11 @@ import Materias from './pages/admin-pages/Materias';
 import Acudientes from './pages/admin-pages/Acudientes';
 import NavBar from './components/navbar/NavBar'
 
-import Entregas from './pages/student-pages/relCAL_Entregas';
+import EntregaEstudiante from './pages/student-pages/relCAL_Entregas';
 
-import Calificaciones from './pages/professor-pages/relCAL_Calificaciones';
+import CalificacionesDocente from './pages/professor-pages/relCAL_Calificaciones';
+
+import SeguimientoEstudiante from './pages/parent-pages/Seguimiento';
 
 function App() { //Funcion de declaracion
   const userData = sessionStorage.getItem('userData');

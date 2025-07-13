@@ -9,6 +9,7 @@ import Acudientes from "../pages/admin-pages/Acudientes";
 import Login from "../components/login/Login";
 import Entregas from "../pages/student-pages/relCAL_Entregas";
 import Calificaciones from "../pages/professor-pages/relCAL_Calificaciones";
+import SeguimientoEstudiante from "../pages/parent-pages/Seguimiento";
 
 const getTipoUsuario = () => {
   const userData = sessionStorage.getItem("userData");
@@ -49,7 +50,7 @@ function Rutas() {
       {/* Rutas para Acudiente */}
       {tipoUsuario === "acudiente" && (
         <Route path="/parent/*" element={<App></App>}>
-          <Route path="seguimiento" element={<></>} />
+          <Route path="seguimiento" element={<SeguimientoEstudiante></SeguimientoEstudiante>} />
         </Route>
       )}
 

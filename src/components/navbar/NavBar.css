@@ -7,9 +7,9 @@ nav {
   color: var(--outline-variant);
   font-size: 0.875em;
   min-height: 100vh;
-  z-index: 2000; /* más alto que topbar */
+  z-index: 2000;
   position: relative;
-  border-top-right-radius: 2rem; /* 👈 curva superior derecha */
+  border-top-right-radius: 2rem; 
 }
 
 .nav-logo {
@@ -33,14 +33,14 @@ nav {
     align-items: center;
     padding: 0.7rem 1rem;
     margin: 0.3rem 0;
-    background-color: var(--secondary); /* estilo bocadillo con color personalizado */
+    background-color: var(--secondary); 
     border-radius: 16px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .nav-item:hover {
-    background-color: rgba(100, 137, 189, 0.85); /* hover más claro */
+    background-color: rgba(100, 137, 189, 0.85); 
     transform: scale(1.02);
     cursor: pointer;
 }

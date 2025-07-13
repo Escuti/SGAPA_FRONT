@@ -47,9 +47,6 @@ const NavBar = () => {
                             <NavLink to="/admin/crud-docentes" className="item-intro">Docentes</NavLink>
                         </li>
                         <li className="nav-item">
-                            <NavLink to="/admin/crud-actividades" className="item-intro">Actividades</NavLink>
-                        </li>
-                        <li className="nav-item">
                             <NavLink to="/admin/crud-grupos" className="item-intro">Grupos</NavLink>
                         </li>
                         <li className="nav-item">
@@ -58,16 +55,18 @@ const NavBar = () => {
                         <li className="nav-item">
                             <NavLink to="/admin/crud-acudientes" className="item-intro">Acudientes</NavLink>
                         </li>
-                        <li className="nav-item">
-                            <NavLink to="/admin/pockets" className="item-intro">Bolsillos</NavLink>
-                        </li>
                     </>
                 )}
 
                 {tipoUsuario === "docente" && (
-                    <li className="nav-item">
-                        <NavLink to="/professor/calificaciones" className="item-intro">Calificaciones</NavLink>
-                    </li>
+                    <>
+                        <li className="nav-item">
+                            <NavLink to="/professor/crud-actividades" className="item-intro">Actividades</NavLink>
+                        </li>
+                        <li className="nav-item">
+                            <NavLink to="/professor/calificaciones" className="item-intro">Calificaciones</NavLink>
+                        </li>
+                    </>
                 )}
 
                 {tipoUsuario === "estudiante" && (

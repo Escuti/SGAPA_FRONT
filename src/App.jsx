@@ -3,11 +3,10 @@ import { Outlet } from 'react-router-dom'
 import './App.css'
 import Estudiantes from './pages/admin-pages/Estudiantes';
 import Docentes from './pages/admin-pages/Docentes';
-import Actividades from './pages/admin-pages/Actividades';
+import Actividades from './pages/professor-pages/Actividades';
 import Grupos from './pages/admin-pages/Grupos';
 import Materias from './pages/admin-pages/Materias';
 import Acudientes from './pages/admin-pages/Acudientes';
-import Products from './pages/admin-pages/Products';
 import NavBar from './components/navbar/NavBar'
 
 import Entregas from './pages/student-pages/relCAL_Entregas';

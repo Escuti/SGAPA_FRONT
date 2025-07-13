@@ -2,11 +2,10 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-d
 import App from "../App";
 import Estudiantes from "../pages/admin-pages/Estudiantes";
 import Docentes from "../pages/admin-pages/Docentes";
-import Actividades from "../pages/admin-pages/Actividades";
+import Actividades from "../pages/professor-pages/Actividades";
 import Grupos from "../pages/admin-pages/Grupos";
 import Materias from "../pages/admin-pages/Materias";
 import Acudientes from "../pages/admin-pages/Acudientes";
-import Bolsillos from "../pages/admin-pages/Bolsillos";
 import Login from "../components/login/Login";
 import Entregas from "../pages/student-pages/relCAL_Entregas";
 import Calificaciones from "../pages/professor-pages/relCAL_Calificaciones";
@@ -26,17 +25,16 @@ function Rutas() {
         <Route path="/admin/*" element={<App></App>}> {/* El App se renderiza directamente aquí */}
           <Route path="crud-estudiantes" element={<Estudiantes></Estudiantes>} /> {/* El Outlet se encarga de desplegar las subrutas*/}
           <Route path="crud-docentes" element={<Docentes></Docentes>} />
-          <Route path="crud-actividades" element={<Actividades></Actividades>} />
           <Route path="crud-grupos" element={<Grupos></Grupos>} />
           <Route path="crud-materias" element={<Materias></Materias>} />
           <Route path="crud-acudientes" element={<Acudientes></Acudientes>} />
-          <Route path="pockets" element={<Bolsillos></Bolsillos>} />
         </Route>
       )}
 
       {/* Rutas para Docente */}
       {tipoUsuario === "docente" && (
         <Route path="/professor/*" element={<App></App>}>
+          <Route path="crud-actividades" element={<Actividades></Actividades>} />
           <Route path="calificaciones" element={<Calificaciones></Calificaciones>} />
         </Route>
       )}

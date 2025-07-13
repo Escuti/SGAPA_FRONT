@@ -200,10 +200,10 @@ const Docentes =()=>{//recordar que los <></> iniciales, son un fragmento, lo cu
         title={"Docentes"}
         paragraph={"Gestiona a todos los docentes"}></ContentHeader>
         <div className="content-search">
-            <InputSearch></InputSearch>
             <BtnAdd 
                 textButton="Invitar a docente" 
                 onClick={()=>{
+                    closeModal();
                     setShowModal(true);
                     }}></BtnAdd>
         </div>

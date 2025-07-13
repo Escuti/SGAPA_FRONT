@@ -22,24 +22,23 @@ const NavBar = () => {
             </div>
             <ul className="nav-menu">
                 {/* Botones para TODOS los usuarios */}
-                <li className="nav-item">
-                    <span className="material-symbols-rounded"></span>
-                    <NavLink to="/home">Inicio</NavLink>
-                </li>
                 
                 {/* Mostrar Configuración solo para admin y docente */}
                 {(tipoUsuario === "administrador" || tipoUsuario === "docente") && (
                     <li className="nav-item">
                         <span className="material-symbols-rounded"></span>
-                        <NavLink to="/config">Configuración</NavLink>
+                        <NavLink to="">Configuración</NavLink>
                     </li>
                 )}
-
-                <hr className="hr-separator" />
 
                 {/* Elementos específicos por rol */}
                 {tipoUsuario === "administrador" && (
                     <>
+                        <li className="nav-item">
+                            <span className="material-symbols-rounded"></span>
+                            <NavLink to="/admin">Inicio</NavLink>
+                        </li>
+                        <hr className="hr-separator" />
                         <li className="nav-item">
                             <NavLink to="/admin/crud-estudiantes" className="item-intro">Estudiantes</NavLink>
                         </li>
@@ -61,6 +60,11 @@ const NavBar = () => {
                 {tipoUsuario === "docente" && (
                     <>
                         <li className="nav-item">
+                            <span className="material-symbols-rounded"></span>
+                            <NavLink to="/professor">Inicio</NavLink>
+                        </li>
+                        <hr className="hr-separator" />
+                        <li className="nav-item">
                             <NavLink to="/professor/crud-actividades" className="item-intro">Actividades</NavLink>
                         </li>
                         <li className="nav-item">
@@ -70,15 +74,29 @@ const NavBar = () => {
                 )}
 
                 {tipoUsuario === "estudiante" && (
-                    <li className="nav-item">
-                        <NavLink to="/student/entregas" className="item-intro">Entregas</NavLink>
-                    </li>
+                    <>
+                        <li className="nav-item">
+                            <span className="material-symbols-rounded"></span>
+                            <NavLink to="/student">Inicio</NavLink>
+                        </li>
+                        <hr className="hr-separator" />
+                        <li className="nav-item">
+                            <NavLink to="/student/entregas" className="item-intro">Entregas</NavLink>
+                        </li>
+                    </>
                 )}
 
                 {tipoUsuario === "acudiente" && (
-                    <li className="nav-item">
-                        <NavLink to="/parent/seguimiento" className="item-intro">Seguimiento</NavLink>
-                    </li>
+                    <>
+                        <li className="nav-item">
+                            <span className="material-symbols-rounded"></span>
+                            <NavLink to="/parent">Inicio</NavLink>
+                        </li>
+                        <hr className="hr-separator" />
+                        <li className="nav-item">
+                            <NavLink to="/parent/seguimiento" className="item-intro">Seguimiento</NavLink>
+                        </li>
+                    </>
                 )}
 
                 <hr className="hr-separator" />

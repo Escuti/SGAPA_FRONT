@@ -135,10 +135,10 @@ const Grupos =()=>{//recordar que los <></> iniciales, son un fragmento, lo cual
         title={"Grupos"}
         paragraph={"Gestiona todos los grupos"}></ContentHeader>
         <div className="content-search">
-            <InputSearch></InputSearch>
             <BtnAdd 
                 textButton="Crear Grupo" 
                 onClick={()=>{
+                    closeModal();
                     setShowModal(true);
                     }}></BtnAdd>
         </div>

@@ -248,6 +248,7 @@ const Estudiantes =()=>{//recordar que los <></> iniciales, son un fragmento, lo
             <BtnAdd 
                 textButton="Invitar a estudiante" 
                 onClick={()=>{
+                    closeModal();
                     setShowModal(true);
                     }}></BtnAdd>
         </div>

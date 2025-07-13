@@ -200,10 +200,10 @@ const Acudientes =()=>{//recordar que los <></> iniciales, son un fragmento, lo 
         title={"Acudientes"}
         paragraph={"Gestiona a todos los acudientes"}></ContentHeader>
         <div className="content-search">
-            <InputSearch></InputSearch>
             <BtnAdd 
                 textButton="Invitar a acudiente" 
                 onClick={()=>{
+                    closeModal();                  
                     setShowModal(true);
                     }}></BtnAdd>
         </div>

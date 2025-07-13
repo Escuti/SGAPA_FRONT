@@ -135,10 +135,10 @@ const Materias =()=>{//recordar que los <></> iniciales, son un fragmento, lo cu
         title={"Materias"}
         paragraph={"Gestiona todas las materias"}></ContentHeader>
         <div className="content-search">
-            <InputSearch></InputSearch>
             <BtnAdd 
                 textButton="Crear Materia" 
                 onClick={()=>{
+                    closeModal();
                     setShowModal(true);
                     }}></BtnAdd>
         </div>

@@ -189,10 +189,10 @@ const Actividades =()=>{//recordar que los <></> iniciales, son un fragmento, lo
         title={"Actividades"}
         paragraph={"Gestiona todas las actividades"}></ContentHeader>
         <div className="content-search">
-            <InputSearch></InputSearch>
             <BtnAdd 
                 textButton="Crear Actividad" 
                 onClick={()=>{
+                    closeModal();
                     setShowModal(true);
                     }}></BtnAdd>
         </div>

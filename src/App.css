@@ -65,3 +65,7 @@ body{
 .icon-btn:hover {
   color: #000;
 }
+
+.swal2-container {
+  z-index: 3000 !important;
+}

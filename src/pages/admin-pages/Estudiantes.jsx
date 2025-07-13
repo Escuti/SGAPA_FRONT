@@ -111,7 +111,7 @@ const Estudiantes =()=>{//recordar que los <></> iniciales, son un fragmento, lo
         {name: "Grupo", selector: row => row.grupo},
         {name: "Padre de Familia", selector: row => row.padre_familia},
         {name: "Estado", selector: row =>  ( //Ejemplo de renderizado condicional, donde traemos los badge del css y los aplicamos a un elemento específico del data-table
-            <span className={`badge ${row.estado===1 ? "badge-green" : "badge-red"}`}> 
+            <span className={`badge ${row.estado===1 ? "badge-blue" : "badge-red"}`}> 
                 {row.estado===1 ? "Activo" : "Inactivo"}
             </span>
         )},
@@ -128,7 +128,7 @@ const Estudiantes =()=>{//recordar que los <></> iniciales, son un fragmento, lo
                <i
                  className={`fas ${row.estado === 1 ? "fa-toggle-on" : "fa-toggle-off"} icon-btn`}
                  title="Cambiar estado"
-                 style={{ cursor: "pointer", color: row.estado === 1 ? "green" : "gray" }}
+                 style={{ cursor: "pointer", color: row.estado === 1 ? "#2196F3" : "gray" }}
                  onClick={() => handleToggleEstado(row)}
                ></i>
              </div>
@@ -243,9 +243,8 @@ const Estudiantes =()=>{//recordar que los <></> iniciales, son un fragmento, lo
         <TopBar></TopBar>
         <ContentHeader
         title={"Estudiantes"}
-        paragraph={"Lorem Ipsum"}></ContentHeader>
+        paragraph={"Gestiona a todos los estudiantes"}></ContentHeader>
         <div className="content-search">
-            <InputSearch></InputSearch>
             <BtnAdd 
                 textButton="Invitar a estudiante" 
                 onClick={()=>{

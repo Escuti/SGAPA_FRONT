@@ -125,7 +125,7 @@ const CalificacionesDocente = () => {
       <TopBar />
       <ContentHeader
         title={"Calificaciones"}
-        paragraph={"Gestión de notas y feedback para actividades"}
+        paragraph={"Gestiona las entregas de tus estudiantes"}
       />
       <div className="table-container">
         <DataTable

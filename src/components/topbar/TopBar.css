@@ -1,5 +1,5 @@
 .topbar-container {
-  background-color: var(--primary);
+  background-color: var(--secondary);
   height: 60px;
   display: flex;
   justify-content: space-between;
@@ -10,7 +10,8 @@
   top: 0;
   left: 0;
   right: 0;
-  z-index: 1000;
+  z-index: 1000; /* debajo del navbar */
+  padding-left: 220px; /* espacio para que la curva del navbar no se superponga mal */
 }
 
 .topbar-left a {
@@ -32,14 +33,22 @@
 }
 
 .icon-button {
-  background: none;
+  background-color: var(--primary);
   border: none;
   color: white;
   cursor: pointer;
-  padding: 0.25rem;
-  transition: color 0.2s ease;
+  padding: 0.5rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  font-size: 1.2rem;
 }
 
 .icon-button:hover {
-  color: #aadfff;
+  background-color: #7da3d2;
+  transform: scale(1.05);
 }

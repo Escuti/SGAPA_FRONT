@@ -23,14 +23,14 @@ const NavBar = () => {
             <ul className="nav-menu">
                 {/* Botones para TODOS los usuarios */}
                 <li className="nav-item">
-                    <span className="material-symbols-rounded">home</span>
+                    <span className="material-symbols-rounded"></span>
                     <NavLink to="/home">Inicio</NavLink>
                 </li>
                 
                 {/* Mostrar Configuración solo para admin y docente */}
                 {(tipoUsuario === "administrador" || tipoUsuario === "docente") && (
                     <li className="nav-item">
-                        <span className="material-symbols-rounded">settings</span>
+                        <span className="material-symbols-rounded"></span>
                         <NavLink to="/config">Configuración</NavLink>
                     </li>
                 )}
@@ -85,7 +85,7 @@ const NavBar = () => {
 
                 {/* Botón de logout para todos */}
                 <li className="nav-item">
-                    <span className="material-symbols-rounded">logout</span>
+                    <span className="material-symbols-rounded"></span>
                     <NavLink to="/login" onClick={cerrarSesion}>Cerrar sesión</NavLink>
                 </li>
             </ul>

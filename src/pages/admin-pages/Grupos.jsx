@@ -133,7 +133,7 @@ const Grupos =()=>{//recordar que los <></> iniciales, son un fragmento, lo cual
         <TopBar></TopBar>
         <ContentHeader
         title={"Grupos"}
-        paragraph={"Lorem Ipsum"}></ContentHeader>
+        paragraph={"Gestiona todos los grupos"}></ContentHeader>
         <div className="content-search">
             <InputSearch></InputSearch>
             <BtnAdd 

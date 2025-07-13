@@ -187,7 +187,7 @@ const Actividades =()=>{//recordar que los <></> iniciales, son un fragmento, lo
         <TopBar></TopBar>
         <ContentHeader
         title={"Actividades"}
-        paragraph={"Lorem Ipsum"}></ContentHeader>
+        paragraph={"Gestiona todas las actividades"}></ContentHeader>
         <div className="content-search">
             <InputSearch></InputSearch>
             <BtnAdd 

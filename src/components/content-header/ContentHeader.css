@@ -17,8 +17,8 @@
 
 .bubble-title {
   display: inline-block;
-  background-color: var(--primary);
-  color: #222;
+  background-color: var(--secondary);
+  color: #fff;
   padding: 0.5rem 1rem;
   border-radius: 1rem;
   font-size: 2em;

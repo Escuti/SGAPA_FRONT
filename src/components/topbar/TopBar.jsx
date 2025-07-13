@@ -6,8 +6,8 @@ const TopBar = () => {
   return (
     <header className="topbar-container">
       <div className="topbar-left">
-        <a href="#">Información</a>
-        <a href="#">Texto Ejemplo</a>
+        <a href="#"></a>
+        <a href="#"></a>
       </div>
 
       <div className="topbar-right">

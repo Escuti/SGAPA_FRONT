@@ -1,4 +1,4 @@
-.btn-add{
+.btn-add {
     display: flex;
     align-items: center;
     background-color: var(--tertiary);
@@ -7,8 +7,12 @@
     padding: 0.5rem 1rem;
     border-radius: 5px;
     cursor: pointer;
+    
+    margin-top: -10px; 
+    margin-left: 25px;  
 }
 
-.btn-add:hover:not(:disabled) {
-  background-color: #16577a; 
+.btn-add:hover:not(:disabled){
+    background-color: #436da7;
+    cursor: pointer;
 }

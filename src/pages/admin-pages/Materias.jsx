@@ -133,7 +133,7 @@ const Materias =()=>{//recordar que los <></> iniciales, son un fragmento, lo cu
         <TopBar></TopBar>
         <ContentHeader
         title={"Materias"}
-        paragraph={"Lorem Ipsum"}></ContentHeader>
+        paragraph={"Gestiona todas las materias"}></ContentHeader>
         <div className="content-search">
             <InputSearch></InputSearch>
             <BtnAdd 

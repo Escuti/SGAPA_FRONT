@@ -11,11 +11,18 @@ export const getAssignmentById = async (id_activid) => {
 };
 
 export const createAssignment = async (data) => {
-  return await fetch(`${API_BASE}/assignments/create-assignment/`, {
+  const res = await fetch(`${API_BASE}/assignments/create-assignment/`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data),
   });
+  
+  if (!res.ok) {
+    const errorData = await res.json();
+    throw new Error(errorData.message || "Error al crear la actividad");
+  }
+  
+  return await res.json(); // { success, message, data }
 };
 
 export const updateAssignment = async (assignment) => {

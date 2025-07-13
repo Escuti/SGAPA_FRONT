@@ -1,175 +1,156 @@
 import { useEffect, useState } from "react";
-import BtnAdd from "../../components/btn-add/BtnAdd";
-import ContentHeader from "../../components/content-header/ContentHeader";
-import InputSearch from "../../components/input-search/InputSearch";
 import DataTable from "react-data-table-component";
-import Modal from "../../components/modal/Modal"
-import Swal from "sweetalert2"
-import TopBar from '../../components/topbar/TopBar'
+import Modal from "../../components/modal/Modal";
+import Swal from "sweetalert2";
+import TopBar from '../../components/topbar/TopBar';
+import ContentHeader from "../../components/content-header/ContentHeader";
+import BtnAdd from "../../components/btn-add/BtnAdd";
 
-//Importanción de servicios de la API
-import { getGroups, createGroup, updateGroup } from "../../services/groupService"; //definición de métodos o servicios a usar
+// Servicios
+import { getAssignments } from "../../services/assignmentService";
+import { uploadRelCAL, getRelCAL } from "../../services/relCALService";
 
+const EntregaEstudiante = () => {
+  // Estados
+  const [assignments, setAssignments] = useState([]);
+  const [relCALs, setRelCALs] = useState([]);
+  const [showModal, setShowModal] = useState(false);
+  const [selectedAssignment, setSelectedAssignment] = useState(null);
+  const [file, setFile] = useState(null);
+  const [comentario, setComentario] = useState("");
+  const [estudFK, setEstudFK] = useState(null);
 
-//Configuración de Columnas
-
-const Entregas =()=>{//recordar que los <></> iniciales, son un fragmento, lo cual exige react para declarar múltiples sentencias
-
-    // Estado para mostrar u ocultar el modal
-     const [showModal, setShowModal] = useState(false);
-   
-     // Estado para guardar la lista de colaboradores (usuarios)
-     const [groups, setGroups] = useState([]);
-     // Para diferenciar si giuardo o actualizo
-     const [groupEditado, setGroupEditado] = useState([]); 
-
-     //NOTA Para evitar error de carga del modal al editar y guardar, definir método closeModal
-     // Llamarlo abajo en la línea 220, como se indica en comentario.
-
-     const closeModal = () => {
-        setShowModal(false); // Cierre el modal
-        setGroupEditado(null); //Restablezca el estado
-        setNewGroup({ //Restablezca los campos
-          Grup0: "",
-        });
-      };
-      
-   
-     // Estado para el formulario de un nuevo colaborador
-     const [newGroup, setNewGroup] = useState({
-        Grup0: "",
-     });
-
-    //Función para obtener datos de usuarios desde la API
-    const fetchGroups = async () => {
-        try{
-            const res= await getGroups();
-            setGroups(res.data || []); // El || en JS significa or, y se asigna un array vacío en caso de que falle la petición
-        }catch(error){
-            Swal.fire("Error", "No se han podido cargar los usuarios", "error")
-        }
+  // Obtener datos del estudiante logueado desde sessionStorage
+  useEffect(() => {
+    const userData = JSON.parse(sessionStorage.getItem('userData'));
+    if (userData && userData.id_detalle) {
+      setEstudFK(userData.id_detalle); // Asignar id_detalle como estudFK
     }
-    useEffect(()=>{ //El useEffect es un hook de React que me permite ejecutar peticiones, como la de fetchUsers
-        fetchGroups();
-    }, []);
-    //Config de columnas y rellenar con datos de API
-    const columns=[
-        {name: "Grupo", selector: row => row.grupo},
-        {
-           name: "Acciones",
-           cell: row => (
-             <div className="action-buttons">
-               <i
-                 className="fas fa-edit icon-btn"
-                 title="Editar"
-                 style={{ marginRight: "10px", cursor: "pointer" }}
-                 onClick={() => handleEdit(row)} //Evento cuando haga click sobre opción editar
-               ></i>
-             </div>
-           ),
-           ignoreRowClick: true,
-           allowoverflow: true,
-           button: "true",
-         }
-    ]
+  }, []);
 
-    // Manejador para cambios en los inputs del formulario
-     const handleChange = (e) => {
-       setNewGroup({ ...newGroup, [e.target.name]: e.target.value });
-     };
-   
-     // Manejador para envío del formulario (crear usuario)
-     const handleSubmit = async (e) => {
-       e.preventDefault(); // Previene recarga de página
-       try{
-         if(groupEditado){
-           const res= await updateGroup({...newGroup, id_grupo: groupEditado.id_grupo });
-           if(res.ok){
-             const data= await res.json();
-             if(data.success){
-               Swal.fire("Actualización", data.message, "success");
-             }else{
-               Swal.fire("Sin Cambios", data.message, "info");
-             }
-           }else{
-             const dataError= await res.json();
-             Swal.fire("Error", dataError.message, "error");
-           }
-         }else{
-           const res= await createGroup(newGroup);
-           if(res.ok){
-             const data= await res.json();
-             Swal.fire("Grupo creado", data.message, "success");
-           }else{
-             const dataError= await res.json();
-             Swal.fire("Error", dataError.message, "error");
-           }
-         }
-   
-         setShowModal(false);
-         setGroupEditado(null);
-         setNewGroup({
-          Grup0: "",
-         });
-         fetchGroups(); // Actualizamos la tabla para ver los cambios reflejados
-       }catch(error){
-         Swal.fire("Error", "Ocurrió inesperado", "error");
-       }
-      
-     };
-   
-   
-     const handleEdit = (grupo) =>{
-       setNewGroup({
-       Grup0: grupo.Grup0
-       })
-       setGroupEditado(grupo);
-       setShowModal(true);
-     }
-   
-    //Aquí hacia arriba manejo de servicios
-    return(
-        <>
-        <TopBar></TopBar>
-        <ContentHeader
-        title={"Grupos"}
-        paragraph={"Lorem Ipsum"}></ContentHeader>
-        <div className="content-search">
-            <InputSearch></InputSearch>
-            <BtnAdd 
-                textButton="Crear Grupo" 
-                onClick={()=>{
-                    setShowModal(true);
-                    }}></BtnAdd>
-        </div>
-        <div className="table-container">
-            <DataTable
-            columns={columns}
-            data={groups}
-            pagination
-            highlightOnHover>
-            </DataTable>
-        </div>
+  // Cargar actividades y entregas
+  const fetchData = async () => {
+    try {
+      const assignmentsRes = await getAssignments();
+      setAssignments(assignmentsRes.data || []);
 
-        <Modal
-        isOpen={showModal}
-        //onClose={()=> setShowModal(false)} remplazar esta línea
-        onClose={closeModal} //por esta
-        title={"Creación de Grupo"}>
-            <form onSubmit={handleSubmit}>
-                <div className="form-group">
-                    <label>Grupo</label>
-                    <input type="text" name="grupo" value={newGroup.grupo} onChange={handleChange}></input>
-                </div>
+      const relCALRes = await getRelCAL();
+      setRelCALs(relCALRes.data || []);
+    } catch (error) {
+      Swal.fire("Error", "No se pudieron cargar los datos", "error");
+    }
+  };
 
-                <button type="submit" className="submit-btn"> 
-                  {groupEditado ? "Actualizar" : "Crear"} {/*Lo anterior es un verificador, donde ? comprueba si userEditado tiene datos o no, y así saber si actualizar o invitar */}
-                </button>
-            </form>
-        </Modal>
-                    
-        </>
-    );
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  // Verificar si ya existe una entrega para una actividad
+  const hasSubmission = (id_activid) => {
+  const entrega = relCALs.find(rel => 
+    rel.actividFK === id_activid
+  );
+  
+  // Verificar si existe y tiene archivo_url válido
+  return entrega?.archivo_url !== null && 
+         entrega?.archivo_url !== undefined && 
+         entrega?.archivo_url !== "";
 };
 
-export default Entregas;
+  // Manejador para subir/editar entrega
+  const handleUpload = async (e) => {
+    e.preventDefault();
+    if (!file || !selectedAssignment || !estudFK) {
+      Swal.fire("Error", "Faltan datos requeridos", "error");
+      return;
+    }
+
+    try {
+      const res = await uploadRelCAL(estudFK, selectedAssignment.id_activid, file, comentario);
+      if (res.success) {
+        Swal.fire("Éxito", res.message, "success");
+        setShowModal(false);
+        fetchData(); // Actualizar tabla
+      }
+    } catch (error) {
+      Swal.fire("Error", error.message || "Error al subir la entrega", "error");
+    }
+  };
+
+  // Configuración de columnas para DataTable
+  const columns = [
+    { name: "Título", selector: row => row.titulo },
+    { name: "Descripción", selector: row => row.descripcion },
+    { name: "Fecha", selector: row => new Date(row.fecha).toLocaleDateString() },
+    {
+      name: "Acciones",
+      cell: row => (
+        <span 
+          className={`badge ${hasSubmission(row.id_activid) ? "badge-blue" : "badge-green"}`}
+          onClick={() => {
+            setSelectedAssignment(row);
+            setShowModal(true);
+          }}
+          style={{ cursor: "pointer" }} // Para mantener el efecto clickeable
+        >
+          {hasSubmission(row.id_activid) ? "Editar Entrega" : "Subir Entrega"}
+        </span>
+      ),
+      ignoreRowClick: true,
+    }
+  ];
+
+  return (
+    <>
+      <TopBar />
+      <ContentHeader
+        title={"Entregas de Actividades"}
+        paragraph={"Sube o edita tus entregas aquí"}
+      />
+      <div className="table-container">
+        <DataTable
+          columns={columns}
+          data={assignments}
+          pagination
+          highlightOnHover
+        />
+      </div>
+
+      {/* Modal para subir/editar entrega */}
+      <Modal
+        isOpen={showModal}
+        onClose={() => {
+          setShowModal(false);
+          setSelectedAssignment(null);
+          setFile(null);
+          setComentario("");
+        }}
+        title={selectedAssignment ? `Entrega: ${selectedAssignment.titulo}` : "Subir Entrega"}
+      >
+        <form onSubmit={handleUpload}>
+          <div className="form-group">
+            <label>Archivo</label>
+            <input
+              type="file"
+              onChange={(e) => setFile(e.target.files[0])}
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label>Comentario</label>
+            <textarea
+              value={comentario}
+              onChange={(e) => setComentario(e.target.value)}
+              placeholder="Opcional"
+            />
+          </div>
+          <button type="submit" className="submit-btn">
+            {hasSubmission(selectedAssignment?.id_activid) ? "Actualizar" : "Subir"}
+          </button>
+        </form>
+      </Modal>
+    </>
+  );
+};
+
+export default EntregaEstudiante; 

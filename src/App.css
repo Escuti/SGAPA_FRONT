@@ -49,6 +49,11 @@ body{
   color: white;
 }
 
+.badge-blue {
+  background-color: #2196F3; /* Azul (como en tu versión anterior) */
+  color: white;
+}
+
 .icon-btn {
   cursor: pointer;
   font-size: 1.2rem;
